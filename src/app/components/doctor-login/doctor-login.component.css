@@ -1,0 +1,17 @@
+.form-signin {
+  width: 500px;
+  margin: 100px auto;
+  background-color: #ffffff;
+  padding: 35px 35px;
+}
+
+mat-form-field {
+  width: 100%;
+  font-size: 16px;
+}
+
+button[type="submit"] {
+  width: 100%;
+  border-radius: 0;
+  height: 50px;
+}

@@ -1,0 +1,32 @@
+<div class="signin-container">
+  <form [formGroup]="loginForm" (ngSubmit)="signIn()" class="form-signin" novalidate>
+    <h2>Doctor Sign in</h2>
+    <p style="margin-top: -10px;">Enter your credentials</p>
+    <mat-grid-list cols="12" rowHeight="100px">
+      <mat-grid-tile colspan="12" rowspan="1">
+        <mat-form-field appearance="outline">
+          <mat-label>Patient Id</mat-label>
+          <input type="text" id="patientId" name="patientId" formControlName="patientId" matInput
+            placeholder="Enter your Patient Id">
+          <mat-icon matSuffix>account_circle</mat-icon>
+          <mat-error>Patient Id is required.</mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+    <mat-grid-list cols="12" rowHeight="100px">
+      <mat-grid-tile colspan="12" rowspan="1">
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input type="password" id="password" name="password" formControlName="password" matInput
+            placeholder="Enter your password">
+          <mat-icon matSuffix>lock</mat-icon>
+          <mat-error>Password is required.</mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <br>
+    <button type="submit" mat-flat-button color="primary">Sign in</button>
+  </form>
+
+</div>

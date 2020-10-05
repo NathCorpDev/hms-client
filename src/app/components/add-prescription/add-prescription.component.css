@@ -1,0 +1,38 @@
+.mat-form-field {
+  margin-right: 8px;
+  font-size: 16px;
+}
+
+.searchBtn {
+  height: 57px;
+  margin-top: -24px !important;
+}
+
+.mat-form-field,
+.searchBtn {
+  width: 100%;
+}
+
+.example-container {
+  margin: 50px auto;
+  background: white;
+  width: 700px;
+  padding: 20px;
+}
+
+.container-2 {
+  margin: -30px auto;
+  background: white;
+  width: 700px;
+  padding: 20px;
+}
+
+table {
+  width: 740px;
+  margin: 100px auto;
+}
+
+.btnConteiner {
+  width: 700px;
+  margin: -50px auto;
+}

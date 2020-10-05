@@ -1,0 +1,88 @@
+<div class="signup-container">
+  <form [formGroup]="addDoctorForm" (ngSubmit)="onSubmit()" class="form-signup">
+    <h2>Add New Doctor</h2>
+
+    <mat-grid-list cols="12" rowHeight="100px">
+      <mat-grid-tile colspan="12" rowspan="1">
+        <mat-form-field appearance="outline">
+          <mat-label>Doctor Id</mat-label>
+          <input type="text" name="doctorId" formControlName="doctorId" matInput placeholder="Enter Doctor's Id">
+          <mat-error *ngIf="addDoctorForm.controls['doctorId'].invalid">Doctor Id is required.</mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+    <mat-grid-list cols="12" rowHeight="100px">
+      <mat-grid-tile colspan="12" rowspan="1">
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input type="text" name="name" formControlName="name" matInput placeholder="Enter Doctor's Name">
+          <mat-error *ngIf="addDoctorForm.controls['name'].invalid">Name is required.</mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+    <mat-grid-list cols="12" rowHeight="100px">
+      <mat-grid-tile colspan="6" rowspan="1">
+        <mat-form-field appearance="outline">
+          <mat-label>Highest Qualification</mat-label>
+          <input type="text" name="highestQualification" formControlName="highestQualification" matInput
+            placeholder="Enter Highest Qualification">
+          <mat-error *ngIf="addDoctorForm.controls['highestQualification'].invalid">Highest Qualification is required.
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="6" rowspan="1">
+        <mat-form-field appearance="outline">
+          <mat-label>Specialization</mat-label>
+          <input type="text" name="specialization" formControlName="specialization" matInput
+            placeholder="Enter Specialization">
+          <mat-error *ngIf="addDoctorForm.controls['specialization'].invalid">Specialization is required.</mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+    <mat-grid-list cols="12" rowHeight="100px">
+      <mat-grid-tile colspan="6" rowspan="1">
+        <mat-form-field appearance="outline">
+          <mat-label>Email Address</mat-label>
+          <input type="text" name="email" formControlName="email" matInput placeholder="Enter Email Address">
+          <mat-error *ngIf="addDoctorForm.controls['email'].invalid">Email Address is required.</mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="6" rowspan="1">
+        <mat-form-field appearance="outline">
+          <mat-label>Phone Number</mat-label>
+          <input type="text" name="phoneNo" formControlName="phoneNo" matInput
+            placeholder="Enter Doctor's Phone Number">
+          <mat-error *ngIf="addDoctorForm.controls['phoneNo'].invalid">Phone Number is required.</mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+    <mat-grid-list cols="12">
+      <mat-grid-tile colspan="12" rowspan="1">
+        <div class="form-group">
+          <mat-radio-group formControlName="gender">
+            <mat-radio-button value="Male">Male</mat-radio-button>
+            <mat-radio-button value="Female">Female</mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+    <mat-grid-list cols="12" rowHeight="100px">
+      <mat-grid-tile colspan="12" rowspan="1">
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input type="text" name="password" formControlName="password" matInput
+            placeholder="Enter Password">
+          <mat-error *ngIf="addDoctorForm.controls['password'].invalid">Password is required.</mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <br>
+    <button [disabled]="!addDoctorForm.valid" type="submit" mat-flat-button color="primary">Add new Doctor</button>
+  </form>
+
+</div>

@@ -1,0 +1,79 @@
+<div class="example-container">
+  <mat-grid-list cols="12" rowHeight="100px">
+    <mat-grid-tile colspan="10" rowspan="1">
+      <mat-form-field appearance="outline">
+        <mat-label>Patient Id</mat-label>
+        <input [(ngModel)]="patientId" matInput placeholder="Enter Patient's Id">
+        <mat-hint style="color: red;" *ngIf="formHasError">{{error_message}}</mat-hint>
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="2" rowspan="1">
+      <button (click)="searchPatient()" class="searchBtn" mat-raised-button color="primary">Search</button>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+
+<div [hidden]="!patientFound" class="container-2">
+  <mat-grid-list cols="12" rowHeight="100px" style="text-align: left !important;">
+    <mat-grid-tile colspan="6" rowspan="1">
+      <h4><strong>Patient's Name </strong>{{patient?.name}}</h4>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="6" rowspan="1">
+      <h4><strong>Gender </strong>{{patient?.gender}}</h4>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <mat-grid-list cols="12" rowHeight="100px">
+    <mat-grid-tile colspan="4" rowspan="1">
+      <mat-form-field appearance="outline">
+        <mat-label>Medicine Name</mat-label>
+        <input [(ngModel)]="localdata.name" type="text" name="name" matInput placeholder="Enter Medicine Name">
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="4" rowspan="1">
+      <mat-form-field appearance="outline">
+        <mat-label>Dosage / Day</mat-label>
+        <input [(ngModel)]="localdata.dosage" type="text" name="dosage" matInput placeholder="Enter Dosage Per Day">
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="4" rowspan="1">
+      <mat-form-field appearance="outline">
+        <mat-label>No. Of Days</mat-label>
+        <input [(ngModel)]="localdata.noOfDays" type="text" name="noOfDays" matInput placeholder="Enter No. of Days">
+      </mat-form-field>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  <button (click)="addPrescription()" mat-flat-button color="primary">Add Prescription</button>
+
+</div>
+
+<table [hidden]="!patientFound" mat-table [dataSource]="dataSource">
+
+  <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Medicine Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="dosage">
+    <th mat-header-cell *matHeaderCellDef> Dosage </th>
+    <td mat-cell *matCellDef="let element"> {{element.dosage}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="noOfDays">
+    <th mat-header-cell *matHeaderCellDef> No. of Days </th>
+    <td mat-cell *matCellDef="let element"> {{element.noOfDays}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<div [hidden]="!patientFound" class="btnConteiner">
+  <button (click)="savePrescription()" mat-flat-button color="primary">Save Prescription</button>
+</div>

@@ -1,0 +1,58 @@
+<table mat-table [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z8">
+  <!-- <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
+    <th mat-header-cell *matHeaderCellDef> {{column | titlecase}} </th>
+    <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
+  </ng-container> -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="date">
+    <th mat-header-cell *matHeaderCellDef> Date Prescribed </th>
+    <td mat-cell *matCellDef="let element"> {{element.date | date:"longDate"}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="doctorName">
+    <th mat-header-cell *matHeaderCellDef> Doctor's Name </th>
+    <td mat-cell *matCellDef="let element">Prescribed By - Dr. {{element.doctorName}} </td>
+  </ng-container>
+
+  <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+  <ng-container matColumnDef="expandedDetail">
+    <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
+      <div class="example-element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+        <table class="collapsed">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Dosage</th>
+              <th>No. of Days</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let p of element.prescription">
+              <td>{{p.name}}</td>
+              <td>{{p.dosage}}</td>
+              <td>{{p.noOfDays}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="disclaimer">
+    <td mat-footer-cell *matFooterCellDef colspan="2">
+      No prescription found.
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+  <tr mat-row *matRowDef="let element; columns: columnsToDisplay;" class="example-element-row"
+    [class.example-expanded-row]="expandedElement === element"
+    (click)="expandedElement = expandedElement === element ? null : element">
+  </tr>
+  <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+  <tr [hidden]="!noDataFound" style="text-align: center;" mat-footer-row *matFooterRowDef="['disclaimer']"
+    class="example-second-footer-row"></tr>
+
+</table>

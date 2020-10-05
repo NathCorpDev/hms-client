@@ -1,0 +1,61 @@
+<div class="signup-container">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="form-signup">
+    <h2>Register</h2>
+    <mat-grid-list cols="12" rowHeight="100px">
+      <mat-grid-tile colspan="12" rowspan="1">
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input type="text" name="name" formControlName="name" matInput placeholder="Enter your name">
+          <mat-icon matSuffix>account_circle</mat-icon>
+          <mat-error *ngIf="registerForm.controls['name'].invalid">Name is required.</mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+    <mat-grid-list cols="12" rowHeight="100px">
+      <mat-grid-tile colspan="12" rowspan="1">
+        <mat-form-field appearance="outline">
+          <mat-label>Email Address</mat-label>
+          <input type="email" name="email" formControlName="email" matInput placeholder="Enter your email address">
+          <mat-icon matSuffix>account_circle</mat-icon>
+          <mat-error *ngIf="registerForm.controls['email'].invalid">
+            <div *ngIf="registerForm.controls['email'].errors.required">
+              Email is required.
+            </div>
+            <div *ngIf="registerForm.controls['email'].errors.email">
+              Invalid Email.
+            </div>
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+    <mat-grid-list cols="12" rowHeight="100px">
+      <mat-grid-tile colspan="12" rowspan="1">
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input type="text" name="password" formControlName="password" matInput placeholder="Enter password">
+          <mat-icon matSuffix>lock</mat-icon>
+          <mat-error *ngIf="registerForm.controls['password'].invalid">Password is required.</mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+    <mat-grid-list cols="12" rowHeight="100px">
+      <mat-grid-tile colspan="12" rowspan="1">
+        <mat-form-field appearance="outline">
+          <mat-label>Confirm Password</mat-label>
+          <input type="text" name="confirmPassword" formControlName="confirmPassword" matInput
+            placeholder="Confirm password">
+          <mat-icon matSuffix>lock</mat-icon>
+          <mat-error
+            *ngIf="registerForm.controls['confirmPassword'].pristine || registerForm.controls['confirmPassword'].errors?.MatchPassword">
+            Password does not match</mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <br>
+    <button [disabled]="!registerForm.valid" type="submit" mat-flat-button color="primary">Register</button>
+  </form>
+
+</div>
