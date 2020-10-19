@@ -1,0 +1,157 @@
+<div class="searchText">
+  <mat-form-field appearance="outline">
+    <mat-label>Search Patient</mat-label>
+    <input #pid="ngModel" [(ngModel)]="searchKey" matInput placeholder="search patient" required>
+    <button (click)="getPatientDetails()" mat-icon-button matSuffix>
+      <mat-icon matSuffix>search</mat-icon>
+    </button>
+    <mat-hint *ngIf="pid.touched && pid.invalid" style="color: red;font-size: 12px;">Please enter Patient Id
+    </mat-hint>
+  </mat-form-field>
+</div>
+
+<form [hidden]="!patientFound" class="admitPatientForm" [formGroup]="patientDetails" (ngSubmit)="onSubmit()">
+  <mat-horizontal-stepper labelPosition="bottom" linear #stepper>
+    <mat-step [completed]="patientDetails.controls['age'].valid">
+      <ng-template matStepLabel>Patient's Details</ng-template>
+      <mat-grid-list cols="12" rowHeight="100px">
+        <mat-grid-tile [colspan]="12" [rowspan]="1">
+          <mat-form-field appearance="outline">
+            <mat-label>Patient's Id</mat-label>
+            <input matInput formControlName="patientId" placeholder="Last name, First name" readonly>
+          </mat-form-field>
+        </mat-grid-tile>
+      </mat-grid-list>
+
+      <mat-grid-list cols="12" rowHeight="100px">
+        <mat-grid-tile [colspan]="12" [rowspan]="1">
+          <mat-form-field appearance="outline">
+            <mat-label>Patient's Name</mat-label>
+            <input matInput formControlName="patientName" placeholder="Last name, First name" readonly>
+          </mat-form-field>
+        </mat-grid-tile>
+      </mat-grid-list>
+
+      <mat-grid-list cols="12" rowHeight="100px">
+        <mat-grid-tile [colspan]="12" [rowspan]="1">
+          <mat-form-field appearance="outline">
+            <mat-label>Patient's Gender</mat-label>
+            <input matInput formControlName="gender" placeholder="Last name, First name" readonly>
+          </mat-form-field>
+        </mat-grid-tile>
+      </mat-grid-list>
+
+      <mat-grid-list cols="12" rowHeight="100px">
+        <mat-grid-tile [colspan]="12" [rowspan]="1">
+          <mat-form-field appearance="outline">
+            <mat-label>Patient's Age</mat-label>
+            <input matInput formControlName="age" placeholder="Last name, First name" required>
+            <mat-error
+              *ngIf="patientDetails.controls['age'].invalid && (patientDetails.controls['age'].dirty || patientDetails.controls['age'].touched)"
+              class="alert alert-danger">
+              <div *ngIf="patientDetails.controls['age'].errors.required">
+                Age is required.
+              </div>
+            </mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+      </mat-grid-list>
+
+      <div>
+        <button color="primary" type="button" mat-flat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Contact Details</ng-template>
+      <mat-grid-list cols="12" rowHeight="100px">
+        <mat-grid-tile [colspan]="12" [rowspan]="1">
+          <mat-form-field appearance="outline">
+            <mat-label>Patient's Address</mat-label>
+            <input matInput formControlName="address" placeholder="Last name, First name" readonly>
+          </mat-form-field>
+        </mat-grid-tile>
+      </mat-grid-list>
+      <mat-grid-list cols="12" rowHeight="100px">
+        <mat-grid-tile [colspan]="12" [rowspan]="1">
+          <mat-form-field appearance="outline">
+            <mat-label>Patient's Phone Number</mat-label>
+            <input matInput formControlName="phoneNo" placeholder="Last name, First name" readonly>
+          </mat-form-field>
+        </mat-grid-tile>
+      </mat-grid-list>
+
+      <div>
+        <button color="primary" type="button" style="margin-right: 10px;" type="button" mat-stroked-button
+          matStepperPrevious>Back</button>
+        <button color="primary" type="button" mat-flat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Admission Details</ng-template>
+      <mat-grid-list cols="12" rowHeight="100px">
+        <mat-grid-tile [colspan]="12" [rowspan]="1">
+          <mat-form-field appearance="outline">
+            <mat-label>Date Admitted</mat-label>
+            <input [matDatepicker]="picker1" matInput formControlName="dateAdmitted" placeholder="Last name, First name"
+              required>
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+            <mat-error
+              *ngIf="patientDetails.controls['dateAdmitted'].invalid && (patientDetails.controls['dateAdmitted'].dirty || patientDetails.controls['dateAdmitted'].touched)"
+              class="alert alert-danger">
+              <div *ngIf="patientDetails.controls['dateAdmitted'].errors.required">
+                Admission date is required.
+              </div>
+            </mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+      </mat-grid-list>
+
+      <mat-grid-list cols="12" rowHeight="100px">
+        <mat-grid-tile [colspan]="12" [rowspan]="1">
+          <mat-form-field appearance="outline">
+            <mat-label>Date Discharged</mat-label>
+            <input [matDatepicker]="picker2" matInput formControlName="dateDischarged"
+              placeholder="Last name, First name">
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+          </mat-form-field>
+        </mat-grid-tile>
+      </mat-grid-list>
+
+      <mat-grid-list cols="12" rowHeight="100px">
+        <mat-grid-tile [colspan]="12" [rowspan]="1">
+          <mat-form-field appearance="outline">
+            <mat-label>Reason for Admitting</mat-label>
+            <input matInput formControlName="reasonForAdmitting" placeholder="Last name, First name" required>
+            <mat-error
+              *ngIf="patientDetails.controls['reasonForAdmitting'].invalid && (patientDetails.controls['reasonForAdmitting'].dirty || patientDetails.controls['reasonForAdmitting'].touched)"
+              class="alert alert-danger">
+              <div *ngIf="patientDetails.controls['reasonForAdmitting'].errors.required">
+                Reason for admitting is required.
+              </div>
+            </mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+      </mat-grid-list>
+
+      <mat-grid-list cols="12" rowHeight="100px">
+        <mat-grid-tile [colspan]="12" [rowspan]="1">
+          <mat-form-field appearance="outline">
+            <mat-label>Tests Prescribed</mat-label>
+            <input matInput formControlName="testsPrescribed" placeholder="Last name, First name">
+          </mat-form-field>
+        </mat-grid-tile>
+      </mat-grid-list>
+      <div>
+        <button color="primary" type="button" style="margin-right: 10px;" type="button" mat-stroked-button
+          matStepperPrevious>Back</button>
+        <button
+          [disabled]="patientDetails.controls['dateAdmitted'].invalid || patientDetails.controls['reasonForAdmitting'].invalid"
+          color="primary" type="submit" mat-flat-button matStepperNext>Add</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+</form>

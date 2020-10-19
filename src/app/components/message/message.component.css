@@ -1,0 +1,9 @@
+.example-card {
+  /* max-width: 400px; */
+  background-color: red;
+  color: #ffffff;
+}
+
+.example-header-image {
+  background-size: cover;
+}

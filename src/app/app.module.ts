@@ -22,6 +22,9 @@ import { AccessDeniedComponent } from './components/access-denied/access-denied.
 import { ViewPrescriptionComponent } from './components/view-prescription/view-prescription.component';
 import { PatientLoginComponent } from './components/patient-login/patient-login.component';
 import { SideMenuComponent } from './components/side-menu/side-menu.component';
+import { AdmitPatientComponent } from './components/admit-patient/admit-patient.component';
+import { MessageComponent } from './components/message/message.component';
+import { SuccessMessageComponent } from './components/success-message/success-message.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +39,10 @@ import { SideMenuComponent } from './components/side-menu/side-menu.component';
     AccessDeniedComponent,
     ViewPrescriptionComponent,
     PatientLoginComponent,
-    SideMenuComponent
+    SideMenuComponent,
+    AdmitPatientComponent,
+    MessageComponent,
+    SuccessMessageComponent
   ],
   imports: [
     BrowserModule,

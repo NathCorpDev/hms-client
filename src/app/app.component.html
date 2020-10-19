@@ -35,6 +35,12 @@
         </a>
         <hr>
       </div>
+      <div *ngIf="_authService.getProfile()=='Admin'">
+        <a routerLink="/admit-patient">
+          <mat-list-item>Admit Patient</mat-list-item>
+        </a>
+        <hr>
+      </div>
       <div *ngIf="_authService.getProfile()=='Doctor'">
         <a routerLink="/add-prescription">
           <mat-list-item>Add New Prescription</mat-list-item>

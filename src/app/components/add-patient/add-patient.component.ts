@@ -18,13 +18,10 @@ export class AddPatientComponent implements OnInit {
 
   ngOnInit(): void {
     this.addPatientForm = this.fb.group({
-      patientId: ['', Validators.required],
       name: ['', Validators.required],
-      dateAdmitted: ['', Validators.required],
-      dateDischarged: ['', Validators.required],
       address: ['', Validators.required],
       gender: ['Male'],
-      phoneNo: ['', Validators.required]
+      phoneNo: ['', Validators.required],
     })
   }
 

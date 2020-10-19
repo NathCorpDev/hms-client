@@ -11,7 +11,15 @@ export class PatientService {
   constructor(private _http: HttpClient) { }
 
   addPatient(patient) {
-    return this._http.post(this._url + '/add-patient', patient)
+    return this._http.post<any>(this._url + '/add-patient', patient)
+      .pipe(
+        map(res => { return res }),
+        catchError(this.handleError)
+      );
+  }
+
+  admitPatient(patientDetails) {
+    return this._http.post<any>(this._url + '/admit-patient', patientDetails)
       .pipe(
         map(res => { return res }),
         catchError(this.handleError)

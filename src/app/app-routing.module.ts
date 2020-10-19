@@ -11,6 +11,7 @@ import { DoctorLoginComponent } from './components/doctor-login/doctor-login.com
 import { AccessDeniedComponent } from './components/access-denied/access-denied.component';
 import { ViewPrescriptionComponent } from './components/view-prescription/view-prescription.component';
 import { PatientLoginComponent } from './components/patient-login/patient-login.component';
+import { AdmitPatientComponent } from './components/admit-patient/admit-patient.component';
 
 
 const routes: Routes = [
@@ -39,6 +40,12 @@ const routes: Routes = [
   {
     path: 'add-patient',
     component: AddPatientComponent,
+    canActivate: [AuthGuard],
+    data: { Roles: ['Admin'] }
+  },
+  {
+    path: 'admit-patient',
+    component: AdmitPatientComponent,
     canActivate: [AuthGuard],
     data: { Roles: ['Admin'] }
   },

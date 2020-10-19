@@ -1,0 +1,30 @@
+.mat-stepper-horizontal {
+  margin-top: 8px;
+  padding: 35px 20px !important;
+}
+
+.mat-form-field {
+  margin-top: 16px;
+}
+
+.admitPatientForm {
+  width: 42%;
+  margin: 2% auto !important;
+}
+
+.mat-form-field {
+  width: 100% !important;
+  margin: 0 10px 0 0;
+}
+
+button {
+  width: 120px;
+  height: 50px;
+}
+
+.searchText {
+  width: 40% !important;
+  margin: 10px auto !important;
+  background: #ffffff;
+  padding: 15px;
+}

@@ -1,0 +1,10 @@
+.example-card {
+    /* max-width: 400px; */
+    background-color: green;
+    color: #ffffff;
+  }
+  
+  .example-header-image {
+    background-size: cover;
+  }
+  

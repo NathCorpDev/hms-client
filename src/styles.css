@@ -12,3 +12,15 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
   background-color: #eeeeee;
 }
+
+.errorMessage {
+  background: red;
+  color: #ffffff;
+  padding: 10px;
+}
+
+.successMessage {
+  background: green;
+  color: #ffffff;
+  padding: 10px;
+}
